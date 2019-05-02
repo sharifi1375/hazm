@@ -2,7 +2,7 @@
 
 from __future__ import unicode_literals
 from nltk.stem.api import StemmerI
-
+from .Finder import finder
 
 class Stemmer(StemmerI):
 	"""
@@ -26,7 +26,7 @@ class Stemmer(StemmerI):
 
 	def stem(self, word):
 		for end in self.ends:
-			if word.endswith(end):
+			if word.endswith(end) and not finder(word) :
 				word = word[:-len(end)]
 
 		if word.endswith('ۀ'):
